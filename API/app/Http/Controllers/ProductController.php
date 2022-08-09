@@ -243,10 +243,11 @@ class ProductController extends Controller
     public function searchProduct($key){
 
 
-        $posts = Product::query()
+        $products = Product::query()
         ->where('product_name_en', 'LIKE', "%{$key}%")
         ->orWhere('product_name_ar', 'LIKE', "%{$key}%")
         ->get();
-return $posts;
+return $products;
+return response()->json(['Products'=>$products,'Status'=>'success']);
     }
 }
